@@ -1,6 +1,8 @@
 const mongoose=require("mongoose");
-
-mongoose.connect("mongodb://localhost/food-order",{
+const mongodb_URL=process.env.MONGODB_URL;
+console.log(mongodb_URL);
+//||"mongodb://localhost/food-order"
+mongoose.connect(mongodb_URL,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useFindAndModify:true,
