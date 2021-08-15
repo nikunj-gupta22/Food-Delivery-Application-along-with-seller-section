@@ -1,0 +1,109 @@
+
+<p id="mereuserkiId" style="display:none;"><%= userid %> </p>
+<div class="container mt-4">
+<table class="table table-bordered border-primary">
+  <thead>
+  <tr>
+  <th>ItemName</th>
+  <th>Qty</th>
+  <th>Price</th>
+  <th>Hotel</th>
+  <th>order id</th>
+  <th>Status</th>
+  <th>Remove</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% if(typeof mycartItem !='undefined'){ %>
+    <% for(let k of mycartItem) { %>
+         <% for(let u of k.arr) { %>
+      <% if(myMap.get(JSON.stringify(u._id))>0){ %>
+  <tr>
+  <td> <%= u.itemName %></td>
+  <td><%= myMap.get(JSON.stringify(u._id)) %></td>
+  <td><%=u.price * myMap.get(JSON.stringify(u._id)) %></td>
+  <td><%= u.hotelname %></td>
+<td  style="color:green"><b><%=  k.orderId._id  %></b></td>  
+
+<td id="orderstatus" class="<%= k.orderId._id %>"><%= k.status %></td>
+<% if(k.status=="completed") { %>
+
+ <td> <button class = "btn btn-success deletebtn" data-btntype="deletable"><i class="fas fa-trash"></i></button></td>
+  <% }else{  %>
+   <td> <button class = "btn btn-success disabled " data-btntype="non-deletable"><i class="fas fa-trash"></i></button></button></td>
+    <% } %>
+</tr>
+  <% myMap.delete(JSON.stringify(u._id)); %>
+  <% } %>
+      <% } %>
+  <% } %>
+
+<% } %>
+    </tbody>
+</table>
+<% if(typeof mycartItem !='undefined'){ %>
+<h5 style="text-align: center;">Total:- Rs.<%= total %></h5>
+<h6 style="text-align: center;">Thanks for Ordering..</h6>
+<h6 style="text-align: center;">Order will deleiver Soon.</h6>
+<% } %>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+//user order script
+let socket=io();
+
+let userid=document.getElementById("mereuserkiId");
+console.log(typeof(userid.innerText)+" "+userid.innerText);
+socket.emit('join',{custid:`user_${userid.innerText}`});
+socket.on('orderupdated1',(body)=>{
+
+
+
+console.log(body.id+" "+body.status+" "+body.orderId);
+let deletebtn=$('.deletebtn');
+let orders=document.getElementsByClassName(body.orderId);
+for(i=0;i<orders.length;i++){
+orders[i].innerText=body.status;
+
+
+}
+
+for(i=0;i<orders.length;i++){
+
+if(orders[i].innerText=='completed'){
+orders[i].nextElementSibling.innerHTML= `<td> <button class = "btn btn-success deletebtn" data-btntype="deletable"><i class="fas fa-trash"></i></button></td>`;
+}
+
+}
+
+
+})
+
+$(".deletebtn").click((e)=>{
+let id=e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
+console.log(id);
+$.post("/hotel/deleteorder",{id:id},function(data){
+  window.location.reload();
+ 
+
+
+});
+
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- to get the n-th node.. -->
+

@@ -1,0 +1,90 @@
+<div class="cart-container">
+  <div class="cart-info">
+    <% for(let u of mycartItem) { %>
+      <% if(myMap.get(JSON.stringify(u._id))>0){ %>
+    <div class="cart-info-inner">
+      <div class="imgcart">
+        <img src="<%= u.avatar  %>" />
+      </div>
+      <div class="cartinfo">
+        <h2 style="color: red"><%= u.itemName %></h2>
+        <p class="desccart"><%= u.description%></p>
+        <p>
+        
+           
+     <b>Rs <%= u.price %> x <span id="cartitemqty<%= u.id %>"><%= myMap.get(JSON.stringify(u._id)) %></span> </b>
+            <% myMap.delete(JSON.stringify(u._id)); %>
+          
+         
+        
+        </p>
+        <button
+          class="btn btn-success"
+          id="<%= u.id %>a"
+          data-columns="<%= u.price %>"
+          onClick="pluscart(this.id)"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          data-columns="<%= u.price %>"
+          id="<%= u.id %>m"
+          onClick="minuscart(this.id)"
+        >
+          <i class="fas fa-minus"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          data-columns="<%= u.price %>"
+          id="<%= u.id %>d"
+          onClick="deletecart(this.id)"
+        >
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+<% } %>
+    <% } %>
+  </div>
+
+  <div class="payment-info">
+    <h4 style="text-align: center; letter-spacing: 1px">Order Summary</h4>
+    <% for(let u of mycartItem) { %>
+      <% if(map2.get(JSON.stringify(u._id))>0){ %>
+    <p class="text-center" data-cole="<%= u.itemName %>" id="<%= u.id %>i">
+      <b><%= u.itemName %>: Rs <span><%=u.price * map2.get(JSON.stringify(u._id)) %></span></b>
+      </p>
+      <% map2.delete(JSON.stringify(u._id)); %>
+  <% } %>
+      <% } %>
+    <hr />
+    <div class="pricetotal">
+      <div>
+        <b> Grand Total</b>
+      </div>
+      <div>
+        <b>Rs.<span id="grandtotal"> <%= pricetotal %></span></b>
+      </div>
+    </div>
+    <div class="container mt-2">
+      <form action="/user/orderplace" method="POST">
+    <div class="form-group">
+      
+      <input type="number" class="form-control" name="phone" id="exampleInputPassword1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxLength="10" placeholder="Phone Number" required>
+    </div>
+
+    <div class="form-group mt-2">
+      
+      <input type="text" class="form-control" name="address" id="exampleInputPassword1" placeholder="Address" required>
+    </div>
+    
+    <div class="text-center my-3">
+    <button type="submit" class="btn btn-primary">Place Order</button>
+    </div>
+  </form>
+  </div>
+  
+
+  </div>
+</div>

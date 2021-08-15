@@ -1,0 +1,31 @@
+
+@media screen and (max-width :800px){
+
+    .signuppage{
+        display:none;
+    }
+        .mobile-registration{
+
+        margin-left: 10px;
+        margin-right: 10px;    
+        
+        }
+        .mobile-signup{
+            margin-left: 10px;
+        margin-right: 10px;
+        }
+       
+}
+
+@media screen and (min-width:801px){
+
+    .mobile-registration{
+     display:none;
+    }
+    .mobile-signup{
+        display:none;
+    }
+
+}
+
+

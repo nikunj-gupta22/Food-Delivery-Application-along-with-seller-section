@@ -1,0 +1,86 @@
+
+<nav>
+  <div class="brand-title">
+   FoodoFest
+  </div>
+  
+  <a href="#" class="toggle-button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </a>
+<div class="navbar-links">
+  <ul>
+    <%   if(typeof username != 'undefined') { %>
+  <li><a href="/" class="active" style="text-decoration: none;">Home</a></li>
+
+    <li><a href="/user/signout"  style="text-decoration: none;">Logout</a></li>
+    <li><a href="/hotel/sellerlogin"  style="text-decoration: none;">Seller</a></li>
+    <li><a href="/user/cartItem"><i class="fas fa-shopping-cart" ></i></a></li> 
+    <li><a href="/user/userorder"  style="text-decoration: none;">Orders</a></li> 
+<% } else if(typeof sellerboard !='undefined'){ %>
+
+
+  <li><a href="/hotel/sellerlogin">Orders</a></li>
+
+<% } else{ %>  
+  <li><a href="/" class="active" style="text-decoration: none;">Home</a></li>
+  <li> <a href="/user/signin" class="loginlink"  style="text-decoration: none;">Login</a><li>
+  <li> <a href="/hotel/sellerlogin" class="loginlink"  style="text-decoration: none;">Seller</a></li>
+  <li><a href="/user/signup" class="signuplink" style="text-decoration: none;">Signup</a></li>
+
+ <% } %>
+</ul>
+</div>
+
+
+</nav>
+
+
+<script>
+  const togglebutton=document.getElementsByClassName("toggle-button")[0];
+  const navbarlinks=document.getElementsByClassName("navbar-links")[0];
+  togglebutton.addEventListener('click',function(e){
+    navbarlinks.classList.toggle('active');
+  })
+</script>
+
+
+
+
+
+<!-- <nav class="nav-container">
+
+  <div class="navbar-items">
+
+  <div class="companyName">
+    <a href="\" class="foodofest">FoodoFest</a>
+  </div>
+  <div class="login-signup">
+    
+<%   if(typeof username != 'undefined') { %>
+  <a href="/user/signout" class="signuplink">Logout</a> 
+
+  <a href="/hotel/sellerlogin" class="loginlink">SellerDashboard</a>
+  <a href="/user/cartItem" class="signuplink"><i class="fas fa-shopping-cart" ></i></a>
+    <% }else{ %>
+ 
+
+     
+
+      <a href="/user/signin" class="loginlink">Login</a>
+
+      <a href="/user/signup" class="signuplink">Signup</a>
+    
+      
+
+
+
+
+      <% } %>
+  </div>
+
+
+</div>
+
+</nav> -->

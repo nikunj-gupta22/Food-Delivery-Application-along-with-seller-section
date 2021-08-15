@@ -1,0 +1,208 @@
+<div class="Item-page-header">
+  <div class="Item-page-header-info-upper">
+
+    <div class="Item-page-header-info">
+      <h2 style="text-transform: capitalize" id="hoteltitle">
+        <%= hotel.hotelname %>
+      </h2>
+      <p><%= hotel.body %></p>
+      <p><b>Adress: </b><%= hotel.locality %></p>
+      <p><b>Zipcode: </b><%= hotel.zip %></p>
+      <p><b>Call: </b><%= hotel.contactNumber%></p>
+      <p><b>Timing: </b> 1:00 am-10:00 pm</p>
+    </div>
+  </div>
+  <div class="Item-page-header-image">
+    <img
+      src="https://images.unsplash.com/photo-1588338529744-4d5b9b55579b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    />
+  </div>
+</div>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <h2 style="font-style: italic">
+        Add ,Delete Items in Your Restaurent <i class="far fa-edit"></i>
+      </h2>
+    </div>
+    <div class="col-md-4 col-sm-12 search-container">
+    
+        <input type="text" placeholder="Search Item" name="search" id="myinput" onkeyup="searchfun()"  />
+        <button type="submit"><i class="fa fa-search"></i></button>
+     
+    </div>
+  </div>
+
+<p style="color:red;">Make sure to delete any item 24 hours before you stop deleivery of that particular item.</p>
+</div>
+
+<div class="container">
+  <div class="row" id="Itemscards">
+    <% for(let u of hotelItem){ %>
+    <div class="card mx-3 my-3  <%= u.id %>"   id="<%= u.itemName %>" style="width: 18rem">
+      <img class="card-img-top" src="<%= u.avatar %>" alt="Card image cap" height="164" width="265" />
+      <div class="card-body">
+
+        <h3 class="card-title" style="text-transform: uppercase; font-style:italic"><%= u. hotelname%></h3>
+        <p class="card-text" style="font-size:20px;"><b><%= u.itemName %></b>  </p>
+        <p class="card-text" style="font-size:20px;"><b>Price :Rs <%= u.price %></b></p>
+        <p><span style="color:rgb(247, 36, 36);font-size:20px;">Online Available: </span><b><%= u.Availability==true?"YES":"No" %></b></p>
+     
+      </div>
+      <div style="margin-bottom: 10px; text-align: center;">
+      <button class="btn btn-danger editbtn" id="<%=u.id %>e" onClick="edit_click(this.id)" style="width:80px;"><i class="far fa-edit"></i></button>
+      <button class="btn btn-danger deletebtn" id="<%= u.id %>" onClick="delete_click(this.id)" style="width:80px;"><i class="fas fa-trash" ></i></button>     
+    </div>
+    </div>
+  
+  <% } %>
+  </div>
+
+  <div class="text-center">
+    <button
+      class="btn btn-success mb-3"
+      id="addItem-btn"
+      style="font-style: italic"
+    >
+      Add Items
+    </button>
+  </div>
+</div>
+
+<div class="container" id="addItemform">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 col-sm-12">
+      <form id="formElem">
+        <div class="form-group">
+          <input
+            type="text"
+            name="hotelname"
+            value="<%= hotel.hotelname %>"
+            style="display: none"
+          />
+          </div>
+          <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="Itemname"
+            name="Itemname"
+            placeholder="Item Name"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <input
+            type="number"
+            class="form-control"
+            id="Price"
+            name="Price"
+            placeholder="Item Price"
+          />
+        </div>
+
+        <select
+          class="form-control form-control-sm mt-3"
+          name="Availability"
+          id="Availability"
+        >
+          <option>Availability Online</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <br />
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Upload Image</label>
+          <input
+            type="file"
+            placeholder="upload profile"
+            id="fileUpload"
+            name="avatar"
+            required
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label for="exampleFormControlTextarea1">Short And Crisp Description</label>
+          <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button  class="btn btn-primary mb-3" id="savingitembtn" >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/hotel/editItems" method="POST">
+          <input type="text" value="" name="id"  id="modalid" style="display:none;" />
+          
+          <div class="form-group">
+            <label for="exampleInputEmail1">Item Name</label>
+            <input type="text" class="form-control" name="itemname" id="modalItemname" aria-describedby="emailHelp" placeholder="Enter Item Name">
+           
+          </div>
+          <div class="form-group">
+        <input type="Number" class="form-control" name="modalPrice" id="modalPrice" placeholder="Price">
+          </div>
+          <select
+          class="form-control form-control-sm mt-3"
+          name="modalAvailability"
+          id="modalAvailability"
+        >
+          <option>Availability Online</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"  id="savchanges">Save changes</button>
+        
+        </div>
+        
+        </form>
+    
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+<script src="/js/addItem.js"></script>
+
+<script>
+  let savechangebtn=document.getElementById("savchanges");
+  let itemcrd=document.getElementById("Itemscards");
+  let arr=itemcrd.children;
+  let modalid=document.getElementById("modalid");
+let editbtn=document.getElementsByClassName("editbtn");
+function edit_click(e){
+  $('#modal1').modal('show');
+  document.getElementById("modalid").value = e;
+  
+
+}
+const searchfun=()=>{
+  console.log("uiuiui0");
+  let filter=document.getElementById("myinput").value.toUpperCase();
+  for(let i=0;i<arr.length;i++){
+  let textvalue=arr[i].id;
+  console.log(arr[i]);
+  if(textvalue.toUpperCase().indexOf(filter) >-1){
+    arr[i].style.display="";
+  }else{
+    arr[i].style.display="none";
+    }
+}
+
+}
+</script>
+  

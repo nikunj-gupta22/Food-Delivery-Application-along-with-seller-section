@@ -1,0 +1,158 @@
+.signuppage {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(66, 166, 248);
+}
+
+@media screen and (max-width: 992px) {
+  .registration {
+    width: 100%;
+   }
+}
+
+.registration {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-signup {
+  padding: 30px;
+  width: 70%;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.container-signup h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.form-control-signup {
+  position: relative;
+  margin-bottom: 25px;
+  width: 340px;
+}
+
+.form-control-signup input {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding: 10px 0px;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  border-bottom: 3px solid white;
+  font-size: 20px;
+  color: white;
+}
+
+.form-control-signup label {
+  position: absolute;
+  left: 0;
+  top: 25px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.form-control-signup label {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  margin-bottom: 3px;
+}
+.form-control-signup input:focus,
+.form-control-signup input:valid {
+  outline: 0;
+}
+.form-control-signup input:focus + label,
+.form-control-signup input:valid + label {
+  color: red;
+  transform: translateY(-40px);
+}
+#deliveryphoto {
+  margin-top: 50px;
+}
+
+.form-control-signup i {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  cursor: pointer;
+}
+.nav-container {
+  display: flex;
+
+  align-items: center;
+
+  height: 60px;
+  width: 100%;
+  background-color: rgb(206, 190, 190);
+  color: black;
+}
+.navbar-items {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  width: 100%;
+}
+.navbar-items .companyName {
+  font-size: 30px;
+  color: black;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
+.navbar-items .login-signup .loginlink {
+  padding: 10px;
+  font-size: 25px;
+  text-decoration: none;
+  color: green;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.navbar-items .login-signup .signuplink {
+  padding: 10px;
+  font-size: 25px;
+  text-decoration: none;
+  color: red;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.serach-restau{
+    
+
+  width:290px;
+  display: block;
+  margin: auto;
+height:56px;
+
+  margin-bottom: 50px;
+  margin-top:50px;
+  
+}
+#search-item{
+    outline:0;
+    border:0;
+    border-bottom:2px solid black;
+   width:290px;
+padding:8px 30px;
+}
+#search-input{
+    border:0px;
+    outline:0;
+    padding:0px 10px;
+}
+.serach-restau i{
+    position:aboslute;
+    top:50%;
+}
+.foodofest{
+  text-decoration: none;
+  color:black;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

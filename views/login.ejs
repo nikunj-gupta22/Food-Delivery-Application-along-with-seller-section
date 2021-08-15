@@ -1,0 +1,65 @@
+
+<div class="signuppage">
+    <div class="registration">
+      
+      <div class="container-signup">
+        <h3>Please Login</h3>
+  
+        <form action="/user/login" method="POST">
+          <div class="form-control-signup">
+            <input type="email" id="email" name="email" autocomplete="off"required />
+            <label> Email </label>
+          </div>
+          <div class="form-control-signup">
+            <input type="password" id="password" name="password" autocomplete="off" required />
+            <label> Password </label>
+            <i class="bi bi-eye-slash" id="togglePassword"></i>
+          </div>
+  
+    
+  
+          <button type="submit" class="btn btn-success" id="signupbtn">Submit</button>
+        </form>
+        
+      </div>
+    </div>
+    <div id="deliveryphoto">
+  <img src="https://cdn.pixabay.com/photo/2021/02/25/12/03/courier-6048941_960_720.png"/>
+    </div>
+  </div>
+  
+
+<div class="mobile-registration">
+  <h3 style="text-align: center;" class="mt-4">Please Login</h3>
+     <form action="/user/login" method="POST">
+           <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+         <div class="mb-3 row">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            
+              <input type="password"  name="password" class="form-control" id="inputPassword" placeholder="Password">
+          
+          </div>
+       <button type="submit" class="btn btn-success" id="signupbtn" class="text-center">Submit</button>
+        </form>
+</div>
+
+
+
+
+
+
+  <script>
+    let togglePassword=document.getElementById("togglePassword");
+            let password=document.getElementById("password");
+    togglePassword.addEventListener('click',function(){
+    
+   
+     
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+  
+    });
+  </script>

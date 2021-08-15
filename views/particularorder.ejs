@@ -1,0 +1,271 @@
+
+<div class="container mt-4">
+    <table class="table table-bordered border-primary">
+      <thead>
+      <tr>
+      <th>ItemName</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Hotel</th>
+      <th>Book</th>
+       </tr>
+      </thead>
+      <tbody>
+        <% if(typeof mycartItem !='undefined'){ %>
+        <% for(let u of mycartItem) { %>
+           <% if(myMap.get(JSON.stringify(u._id))>0){ %>
+      <tr>
+      <td> <%= u.itemName %></td>
+      <td><%= myMap.get(JSON.stringify(u._id)) %></td>
+      <td><%=u.price * myMap.get(JSON.stringify(u._id)) %></td>
+      <td><%= u.hotelname %></td>
+      <td><button class="btn btn-success book" id="<%= u.id %>">Book</button></td>  
+    </tr>
+      <% myMap.delete(JSON.stringify(u._id)); %>
+      <% } %>
+          <% } %>
+      <% } %>
+    
+    
+        </tbody>
+    </table>
+    <% if(typeof mycartItem !='undefined'){ %>
+    <h5 style="text-align: center;">Total:- Rs.<%= total %></h5>
+ 
+    <% } %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,91 @@
+.cart-container{
+    width:80%;
+    margin:auto;
+
+
+}
+.cart-info{
+    width:70%;
+    
+    float:left;
+margin-top:50px;
+
+}
+.payment-info{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width:30%;
+    float:right;
+    border:2px solid #888888;
+    min-height:500px;
+    margin-top:50px;
+    box-shadow: 5px 10px #888888; 
+}
+.cart-info-inner{
+    min-height:250px;
+    
+    width:90%;
+    border:2px solid #888888;
+    margin-bottom:40px;
+    box-shadow: 5px 10px #888888; 
+}
+
+
+
+  .cartinfo{
+    position:relative;
+    
+}
+.cart-info-inner .imgcart img{
+    width:35%;
+    height:246px;
+    float:left;
+    margin-right: 5px; 
+}
+
+@media screen and (max-width:800px) {
+    .cart-container{
+        width:90%;
+        margin:auto;
+}
+    .cart-info{
+        width:100%;
+       margin-top:50px;
+    
+    }
+    .payment-info{
+        width:90%;
+        float:left;
+        border:2px solid black;
+        min-height:300px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-top:50px;
+    }
+   .desccart{
+       display: none;
+   }
+    .cart-info-inner{
+        min-height:200px;
+         width:90%;
+        border:2px solid #888888;
+        margin-bottom:40px;
+        box-shadow: 5px 10px #888888; 
+    }
+    
+    
+    
+    
+    .cart-info-inner .imgcart img{
+        width:40%;
+        height:196px;
+        float:left;
+      
+    }
+}
+.pricetotal{
+    display:flex;
+    justify-content:space-around;
+}
+.pricetotal div{
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

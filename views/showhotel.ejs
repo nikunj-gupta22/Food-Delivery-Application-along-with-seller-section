@@ -1,0 +1,76 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container my-2" style="border-left:6px solid black; border-bottom: 6px solid black;">
+        <h1 style="text-transform: capitalize" id="hoteltitle">
+            <%= data[0].hotelname %>
+          </h1>
+          <p><b><%= data[0].description %></b></p>
+          <p><b>Address: </b><%= data[0].locality %></p>
+          <p><b>Zipcode: </b><%= data[0].zip %></p>
+          
+          <p><b>Minimum Order Price:</b>Rs <%= data[0]. minorderanount %></p>
+          <p><b>Call: </b><%= data[0].contactNumber%></p>
+          <p><b>Timing: </b> 1:00 am-10:00 pm</p>
+    </div>
+  </div>
+
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h2 style="font-style: italic">
+         Why Starve When You have Us? <i class="fas fa-ice-cream"></i>
+        </h2>
+      </div>
+  
+      <div class="col-md-4 col-sm-12 search-container">
+   
+          <input type="text" placeholder="Search Item" name="search" id="myinput" onkeyup="searchfun()" />
+          <button type="submit"><i class="fa fa-search"></i></button>
+      
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row" id="Itemscards">
+      <% for(let u of  items){ %>
+      <div class="card mx-3 my-3  <%= u.id %>"  id="<%= u.itemName %>" style="width: 18rem">
+        <img class="card-img-top" src="<%= u.avatar %>" alt="Card image cap" height="164" width="265" />
+        <div class="card-body">
+  
+          <h3 class="card-title" style="text-transform: uppercase; font-style:italic"><%= u. hotelname%></h3>
+          <p class="card-text" style="font-size:20px;"><b><%= u.itemName %></b>  </p>
+        <p class="card-text"><b><%= u.description %></b></p>
+          <p class="card-text" style="font-size:20px;"><b>Price :Rs <%= u.price %></b></p>
+          <p><span style="color:rgb(247, 36, 36);font-size:20px;">Online Available: </span><b><%= u.Availability==true?"YES":"No" %></b></p>
+<% if( usercartitems.includes(u.id)==false&& u.Availability) {  %>
+          <button class="btn btn-danger" id="<%= u.id %>"  onClick="addcart(this.id)">Add <i class="fas fa-shopping-cart"></i></button>       
+        <% } %>
+
+</div>
+    
+      </div>
+    
+    <% } %>
+    </div>
+  
+
+<script>
+  let itemcrd=document.getElementById("Itemscards");
+  let arr=itemcrd.children;
+
+const searchfun=()=>{
+  console.log("uiuiui0");
+  let filter=document.getElementById("myinput").value.toUpperCase();
+  for(let i=0;i<arr.length;i++){
+  let textvalue=arr[i].id;
+  console.log(arr[i]);
+  if(textvalue.toUpperCase().indexOf(filter) >-1){
+    arr[i].style.display="";
+  }else{
+    arr[i].style.display="none";
+    }
+}
+
+}
+</script>
+  

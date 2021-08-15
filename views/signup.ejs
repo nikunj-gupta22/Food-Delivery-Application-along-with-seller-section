@@ -1,0 +1,139 @@
+
+
+<div class="signuppage">
+  <div class="registration">
+    
+    <div class="container-signup">
+      <h3>Please Signup</h3>
+
+      <form action="/user/signup" method="POST">
+        <div class="form-control-signup">
+          <input type="text" name="name" id="name" autocomplete="off" required />
+          <label>Username</label>
+        </div>
+
+        <div class="form-control-signup">
+          <input type="email" id="email" name="email" autocomplete="off"required />
+          <label>Working Email</label>
+        </div>
+
+        <div class="form-control-signup">
+          <input type="password" id="password" name="password" autocomplete="off" required />
+          <label>Password</label>
+          <i class="bi bi-eye-slash" id="togglePassword"></i>
+        </div>
+
+        <div class="form-control-signup">
+          <input type="password" id="cpassword" name="cpassword" autocomplete="off" required />
+          <label>Confirm Password</label>
+          <i class="bi bi-eye-slash" id="ctogglePassword"></i>
+        </div>
+
+        <div class="form-control-signup">
+          <input type="text" id="phone" name="phone" autocomplete="off" required />
+          <label>Phone Number</label>
+        </div>
+        <button type="submit" class="btn btn-success" id="signupbtn">Submit</button>
+      </form>
+<br>
+      <button class="btn btn-danger"><a href="/user/auth/google" style="text-decoration: none; color:aliceblue">Google Signup+</a></button>
+    </div>
+  </div>
+  <div id="deliveryphoto">
+    <img
+      src="https://cdn.pixabay.com/photo/2021/02/25/12/03/courier-6048941_960_720.png"
+    />
+  </div>
+</div>
+
+
+<div class="mobile-signup">
+  <h3 style="text-align: center;" class="mt-4">Please Signup</h3>
+     <form action="/user/signup" method="POST">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Username</label>
+        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="username">
+       </div>     
+      
+      <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+           </div>
+         <div class="mb-3">
+            <label for="inputPassword" class="form-label">Password</label>
+            
+              <input type="password"  name="password" class="form-control" id="inputPassword" placeholder="password">
+            
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+            
+              <input type="password"  name="cpassword" class="form-control" id="inputPassword" placeholder="confirm password">
+            
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+            <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="Number">
+           </div>  
+        
+       <button type="submit" class="btn btn-success" id="signupbtn" class="text-center">Submit</button>
+        </form>
+        
+        <button class="btn btn-danger"><a href="/user/auth/google" style="text-decoration: none; color:aliceblue">Google Signup+</a></button>
+</div>
+
+<script>
+  let togglePassword=document.getElementById("togglePassword");
+          let password=document.getElementById("password");
+  togglePassword.addEventListener('click',function(){
+  
+ 
+   
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+  });
+
+
+  let ctogglePassword=document.getElementById("ctogglePassword");
+          let cpassword=document.getElementById("cpassword");
+            ctogglePassword.addEventListener('click',function(){
+          const type = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+          cpassword.setAttribute('type', type);
+
+  });
+      
+</script>
+<script>
+
+<% if(typeof error != 'undefined') { %>
+
+  new Noty({
+        theme:"relax",
+        text:"<%=  error  %>",
+        type:"error",
+        layout:"topRight",
+        timeout:3500
+     }).show();
+  <% } %>
+
+
+document.getElementById("signupbtn").addEventListener('click',function(){
+  new Noty({
+        theme:"relax",
+        text:"Check Your Email for verification",
+        type:"success",
+        layout:"topRight",
+        timeout:5000
+     }).show();
+
+});
+
+
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.7/packaged/jquery.noty.packaged.min.js"></script>
+

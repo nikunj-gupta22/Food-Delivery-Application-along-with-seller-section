@@ -1,0 +1,75 @@
+ <div class="container">
+
+<div class="row">
+
+<div class="col-md-4 col-sm-12 my-auto">
+
+<p style="font-size:25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>We Provide One Of the Best Meal With Proper take care of your health and safety at Resonable Rates and Discounts.</b></p>
+
+<a href="#food-items" class="orderNowheader">OrderNow</a>
+</div>
+
+<div class="col-md-8" id="headerphotohide">
+    <div class="home-header-img">
+    <img src="https://st2.depositphotos.com/1007566/7480/v/950/depositphotos_74809463-stock-illustration-food-delivery.jpg" height="700px;">
+</div>
+</div>
+</div>
+<p style="text-align:center"><b>Your Favuorite food deleiver with foodofest.</b></p>
+</div>
+<div class="services-container">
+
+<h5 style="text-align: center;">Order From your favourite Eatery-</h5>
+
+<div id="services">
+<% for(let u of hotelelem) {  %>
+
+  <div class="box">
+        <img  src="<%=  u.avatar  %>"  alt="...">
+    
+          <h5><%= u.hotelname %></h5>
+          <p><b><%= u.description %></b></p>
+        
+          <div class="text-center orderbtn">
+            <a href="/hotel/find/?id=<%= u.hotelname  %>" class="orderNowbtn">OrderNow</a>
+          </div>
+        </div>
+    
+<% } %>
+
+</div>
+</div>
+
+<footer>
+  <div class="container-fluid" style="background-color: rgb(230, 247, 206); min-height:200px;">
+    <div class="row" >
+
+      <div class="col-md-5 col-sm-12 mt-3">
+           <h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;">FoodoFest for Business</h1>
+<p><b>Get more out of your bussiness without focus on what is most important-delighting your customers</b></p>
+
+<div class="text-center">
+  <a href="/user/addrestaurent"><button class="btn btn-success">Get Started</button></a>
+</div>
+      </div>
+      <div class="col-md-4 col-sm-12 mt-3">
+      <h3  style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">Wanna say Something</h3>
+      <div class="text-center">
+      <a href="mailto:nikunjgupta77341@gmail.com"><button class="btn btn-success">Contact</button></a>  
+    </div>
+    </div>
+      <div class="col-md-3 col-sm-12 mt-3">
+         <h3 style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">Resources/Stack</h3>
+      <ul style="text-align: center; list-style: none;">
+        <li>Node.js</li>
+        <li>Express</li>
+        <li>Mongodb Atlas</li>
+        <li>Javascript</li>
+         <li>Jquery</li>
+         <li>Zomato</li>
+   
+      </ul>
+        </div>
+    </div>
+  </div>
+</footer>
