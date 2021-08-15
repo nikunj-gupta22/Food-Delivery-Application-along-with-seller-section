@@ -6,7 +6,7 @@ const express=require("express");
  const cookieParser = require('cookie-parser');
  var cloudinary=require("cloudinary").v2;
 
- const PORT=process.env.PORT||5005;
+ const port=process.env.PORT||5005;
  const db=require("./db/connect");
  const home_controller=require("./controllers/home_controller");
  const fileUpload=require("express-fileupload");
@@ -88,7 +88,7 @@ cloudinary.config({
 
   app.use("/",require("./routes"));
 
-  const server=app.listen(PORT,(err)=>{
+  const server=app.listen(port,(err)=>{
     if(err){
         console.log("error",err);
     }else{
