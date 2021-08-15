@@ -92,7 +92,7 @@ cloudinary.config({
     if(err){
         console.log("error",err);
     }else{
-        console.log("server is up on port",PORT);
+        console.log("server is up on port",port);
     }
 })
 
