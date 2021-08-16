@@ -1,11 +1,10 @@
-require('dotenv').config()
-const express=require("express");
+ require('dotenv').config()
+ const express=require("express");
  const expressLayouts=require("express-ejs-layouts");
  const {urlencoded}=require("body-parser");
  const app=express();
  const cookieParser = require('cookie-parser');
  var cloudinary=require("cloudinary").v2;
-
  const port=process.env.PORT||5005;
  const db=require("./db/connect");
  const home_controller=require("./controllers/home_controller");
@@ -13,19 +12,19 @@ const express=require("express");
  const MongoStore=require("connect-mongo");
  const flash=require( "connect-flash" );
  const customMiddleware=require("./config/middleware");
-const session=require("express-session");
-const passport=require('passport');
-const passportLocal=require("./config/passport-local-strategy");
-const passportGoogle=require("./config/passport-google-oauth2-strategy");
-const Emitter=require("events");
-app.use(cookieParser());
-app.use(express.urlencoded({extended:true}));
-app.use(express.static("./assets"));
-app.use(expressLayouts);
+ const session=require("express-session");
+ const passport=require('passport');
+ const passportLocal=require("./config/passport-local-strategy");
+ const passportGoogle=require("./config/passport-google-oauth2-strategy");
+ const Emitter=require("events");
+ app.use(cookieParser());
+ app.use(express.urlencoded({extended:true}));
+ app.use(express.static("./assets"));
+ app.use(expressLayouts);
 
 
 //for file uploads
-app.use(fileUpload({
+ app.use(fileUpload({
     useTempFiles:true
 }))
 
@@ -40,7 +39,7 @@ app.use(fileUpload({
 
  //mongo store is use to store the session cookie in the db so that whenever we restart server loggedin user cant loggedout.
 
-console.log( process.env.SECRET);
+
  app.use(session({
    name:"Food-order",
    secret: "babajhbsajdbsajdbsajkdbksad",
@@ -50,8 +49,8 @@ console.log( process.env.SECRET);
        maxage:(1000)
    },
    store: MongoStore.create({
-      mongoUrl:"mongodb://localhost/food-order",
-       autoRemove:"disabled"
+      mongoUrl:process.env.MONGODB_URL,
+      autoRemove:"disabled"
    },
    function(err){
        console.log(err||"conect mongo dbsetup");
